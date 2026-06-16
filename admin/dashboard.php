@@ -2,232 +2,193 @@
 
 session_start();
 
-if (!isset($_SESSION['admin_login'])) {
+if(!isset($_SESSION['admin'])){
     header("Location: login.php");
     exit;
 }
 
-require '../koneksi.php';
+include('../koneksi.php');
 
-$data = mysqli_query($conn,
-"SELECT * FROM pesanan ORDER BY id DESC");
+$jumlahMenunggu =
+mysqli_num_rows(
+mysqli_query(
+$conn,
+"SELECT * FROM pesanan
+WHERE status='Menunggu'"
+)
+);
 
-$totalPesanan = mysqli_num_rows($data);
+$jumlahDiproses =
+mysqli_num_rows(
+mysqli_query(
+$conn,
+"SELECT * FROM pesanan
+WHERE status='Diproses'"
+)
+);
 
-mysqli_data_seek($data, 0);
+$jumlahSelesai =
+mysqli_num_rows(
+mysqli_query(
+$conn,
+"SELECT * FROM pesanan
+WHERE status='Selesai'"
+)
+);
+
+$jumlahBatal =
+mysqli_num_rows(
+mysqli_query(
+$conn,
+"SELECT * FROM pesanan
+WHERE status='Dibatalkan'"
+)
+);
+
+$pesananBaru =
+mysqli_num_rows(
+mysqli_query(
+$conn,
+"SELECT * FROM pesanan
+WHERE status='Menunggu'"
+)
+);
 
 ?>
 
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dashboard Admin Aroma Catering</title>
+<title>Dashboard Admin</title>
 
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-body{
-    min-height:100vh;
-    padding:40px;
-
-    background:
-    linear-gradient(
-        rgba(0,0,0,.65),
-        rgba(0,0,0,.65)
-    ),
-    url('https://images.unsplash.com/photo-1555244162-803834f70033');
-
-    background-size:cover;
-    background-position:center;
-}
-
-.container{
-    max-width:1200px;
-    margin:auto;
-}
-
-.dashboard{
-    background:white;
-    border-radius:20px;
-    padding:30px;
-    box-shadow:0 10px 30px rgba(0,0,0,.3);
-}
-
-.title{
-    text-align:center;
-    margin-bottom:30px;
-}
-
-.title h1{
-    color:#ff7b00;
-}
-
-.title p{
-    color:#777;
-}
-
-.card{
-    background:linear-gradient(
-    135deg,
-    #ff7b00,
-    #ffb347
-    );
-
-    color:white;
-
-    padding:25px;
-    border-radius:15px;
-
-    width:250px;
-
-    margin-bottom:25px;
-}
-
-.card h2{
-    font-size:40px;
-}
-
-.card p{
-    font-size:18px;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-table th{
-    background:#ff7b00;
-    color:white;
-    padding:15px;
-}
-
-table td{
-    padding:12px;
-    text-align:center;
-}
-
-table tr:nth-child(even){
-    background:#f8f8f8;
-}
-
-table tr:hover{
-    background:#fff0df;
-}
-
-.status{
-    font-weight:bold;
-}
-
-.btn-selesai{
-    background:#28a745;
-    color:white;
-    padding:8px 15px;
-    border-radius:8px;
-    text-decoration:none;
-}
-
-.btn-selesai:hover{
-    background:#1f7e34;
-}
-
-.logout{
-    display:inline-block;
-    margin-top:25px;
-    background:#dc3545;
-    color:white;
-    padding:12px 25px;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-.logout:hover{
-    background:#b02a37;
-}
-
-</style>
+<link rel="stylesheet"
+href="../assets/css/style.css">
 
 </head>
+
 <body>
 
-<div class="container">
+<div class="sidebar">
 
-<div class="dashboard">
+<h2 style="color:white;padding:20px;">
+🍽 Aroma Catering
+</h2>
 
-<div class="title">
-<h1>🍽️ Dashboard Admin Aroma Catering</h1>
-<p>Sistem Manajemen Pesanan Catering</p>
-</div>
-
-<div class="card">
-<h2><?= $totalPesanan ?></h2>
-<p>Total Pesanan</p>
-</div>
-
-<table>
-
-<tr>
-<th>No</th>
-<th>Nama Pelanggan</th>
-<th>Menu</th>
-<th>Jumlah</th>
-<th>Total</th>
-<th>Status</th>
-<th>Aksi</th>
-</tr>
-
-<?php $no=1; ?>
-
-<?php while($row=mysqli_fetch_assoc($data)): ?>
-
-<tr>
-
-<td><?= $no++ ?></td>
-
-<td><?= $row['nama_pelanggan'] ?></td>
-
-<td><?= $row['menu'] ?></td>
-
-<td><?= $row['jumlah'] ?></td>
-
-<td>Rp <?= number_format($row['total']) ?></td>
-
-<td class="status"><?= $row['status'] ?></td>
-
-<td>
-
-<a
-class="btn-selesai"
-href="selesai.php?id=<?= $row['id'] ?>"
-onclick="return confirm('Pesanan sudah selesai?')">
-Selesai
+<a href="dashboard.php">
+🏠 Dashboard
 </a>
 
-</td>
+<a href="jadwal/index.php">
+📅 Jadwal
+</a>
 
-</tr>
+<a href="../admin/logout.php">
+🚪 Logout
+</a>
 
-<?php endwhile; ?>
+<a href="../admin/pesanan/index.php">
+📦 Pesanan
+</a>
 
-</table>
+<a href="../admin/jadwal/index.php">
+📅 Jadwal
+</a>
 
-<a href="logout.php" class="logout">
-Logout
+<a href="pesanan/index.php">
+📦 Pesanan
+</a>
+
+<a href="menu/index.php">
+🍱 Menu
+</a>
+
+<a href="pesanan/index.php">
+📦 Pesanan
+</a>
+
+<a href="jadwal/index.php">
+📅 Jadwal
+</a>
+
+<a href="laporan/index.php">
+💰 Laporan
 </a>
 
 </div>
 
+<div style="margin-left:270px;padding:20px;">
+
+<h1>Dashboard Admin</h1>
+
+<div class="stat-grid">
+
+<div class="stat-card">
+
+<h3>Total Pesanan</h3>
+
+<h1>
+<?= $totalPesanan ?>
+</h1>
+
 </div>
+
+<div class="stat-card">
+
+<h3>Pesanan Selesai</h3>
+
+<h1>
+<?= $totalSelesai ?>
+</h1>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<canvas id="penjualanChart"></canvas>
+
+<script>
+
+const ctx =
+document.getElementById(
+'penjualanChart'
+);
+
+new Chart(ctx,{
+
+type:'bar',
+
+data:{
+
+labels:[
+'Menunggu',
+'Diproses',
+'Selesai',
+'Dibatalkan'
+],
+
+datasets:[{
+
+label:'Jumlah Pesanan',
+
+data:[
+<?= $jumlahMenunggu ?>,
+<?= $jumlahDiproses ?>,
+<?= $jumlahSelesai ?>,
+<?= $jumlahBatal ?>
+]
+
+}]
+
+}
+
+});
+
+</script>
 
 </body>
 </html>

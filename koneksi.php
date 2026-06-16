@@ -4,10 +4,12 @@ $conn = mysqli_connect(
     "localhost",
     "root",
     "root",
-    "kopi_mbulu"
+    "aroma_catering"
 );
 
 if(!$conn){
-    die("Koneksi gagal");
+    die("Koneksi Database Gagal : "
+    . mysqli_connect_error());
 }
+
 ?>

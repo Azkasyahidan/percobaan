@@ -1,43 +1,63 @@
 <?php
+
 session_start();
-require 'config/koneksi.php';
 
-if(isset($_POST['login']))
-{
+include('../koneksi.php');
 
-$username = $_POST['username'];
-$password = md5($_POST['password']);
+if(isset($_POST['login'])){
 
-$query = mysqli_query($conn,
+$username =
+$_POST['username'];
+
+$password =
+md5($_POST['password']);
+
+$cek =
+mysqli_query(
+$conn,
 "SELECT * FROM admin
 WHERE username='$username'
-AND password='$password'");
+AND password='$password'"
+);
 
-if(mysqli_num_rows($query)>0)
-{
+if(mysqli_num_rows($cek)>0){
+
 $_SESSION['admin']=true;
 
-header("Location: admin/dashboard.php");
-}
-else
-{
-echo "Login Gagal";
+header("Location: dashboard.php");
+
+exit;
+
+}else{
+
+echo "Login gagal";
+
 }
 
 }
+
 ?>
 
 <form method="POST">
 
-<input type="text"
+<h2>Login Admin</h2>
+
+<input
+type="text"
 name="username"
 placeholder="Username">
 
-<input type="password"
+<br><br>
+
+<input
+type="password"
 name="password"
 placeholder="Password">
 
-<button name="login">
+<br><br>
+
+<button
+name="login">
 Login
 </button>
 

@@ -1,41 +1,118 @@
+<?php
+include 'koneksi.php';
+
+$data = mysqli_query(
+    $conn,
+    "SELECT * FROM menu_makanan"
+);
+?>
+
 <!DOCTYPE html>
+
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aroma Catering 🍽️</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Aroma Catering</title>
+
+<link rel="stylesheet"
+href="assets/css/style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
+
 <body>
 
-    <header>
-        <nav>
-            <div class="logo">🍽️ Aroma Catering</div>
-            <ul>
-                <li><a href="index.php" class="active">Beranda</a></li>
-                <li><a href="menu.php">Menu</a></li>
-                <li><a href="tentang.php">Tentang</a></li>
-                <li><a href="kontak.php">Kontak</a></li>
-                <li><a href="admin/login.php">Dashboard Admin</a></li>
-            </ul>
-            <a href="menu.php" class="btn-nav">Pesan Sekarang</a>
-        </nav>
-    </header>
+<div class="container">
 
-    <!-- BAGIAN BERANDA -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Lezat, Higienis dan Tepat Waktu</h1>
-            <p>
-                Melayani Catering & Snack 
-            </p>
-            <a href="menu.php" class="btn-primary">Lihat Menu</a>
+```
+<div class="header">
+
+    <h2>🍽 Aroma Catering</h2>
+
+    <p>Makanan Lezat Untuk Semua Acara</p>
+
+</div>
+
+<!-- SEARCH MENU -->
+<input
+type="text"
+id="searchMenu"
+class="search-box"
+placeholder="Cari menu...">
+
+<!-- DAFTAR MENU -->
+<?php while($menu = mysqli_fetch_assoc($data)){ ?>
+
+    <div class="menu-card">
+
+        <img
+        src="assets/img/menu1.jpg"
+        alt="Menu">
+
+        <h3>
+            <?= $menu['nama_menu']; ?>
+        </h3>
+
+        <p>
+            Rp <?= number_format($menu['harga']); ?>
+        </p>
+
+        <a
+        class="btn"
+        href="user/pesanan.php?id=<?= $menu['id']; ?>">
+            Pesan
+        </a>
+
+    </div>
+
+<?php } ?>
+```
+
+</div>
+
+<!-- AI ASSISTANT -->
+
+<div id="chat-widget">
+
+```
+<div id="chat-header">
+
+    🤖 Aroma AI
+
+</div>
+
+<div id="chat-body">
+
+    <div id="chat-content">
+
+        <div class="ai-msg">
+            Halo 👋 Saya Aroma AI.
+            Silakan tanyakan menu catering.
         </div>
-    </section>
 
-    <footer>
-        <p>© Aroma Catering 🍽️. All Rights Reserved.</p>
-    </footer>
+    </div>
+
+    <input
+    type="text"
+    id="chat-input"
+    placeholder="Tanyakan menu...">
+
+    <button onclick="kirimAI()">
+        Kirim
+    </button>
+
+</div>
+```
+
+</div>
+
+<script src="assets/js/script.js"></script>
 
 </body>
 </html>
