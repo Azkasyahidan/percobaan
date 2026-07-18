@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Undangan Pernikahan — Peggy & Jody</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- CSS Eksternal -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="frame">
+
+    <!-- ============ COVER OVERLAY ============ -->
+    <div id="cover">
+        <div class="frame-border"></div>
+        <p class="eyebrow">Undangan Pernikahan</p>
+
+        <div class="guest-block">
+            <p class="to">Kepada Yth. Bapak/Ibu/Saudara/i</p>
+            <p class="guest-name" id="guest-name">Tamu Undangan</p>
+        </div>
+
+        <svg class="gunungan" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 4 C58 14 54 20 60 26 C70 22 74 30 68 38 C80 40 82 52 70 56 C82 64 78 78 62 76 C64 90 50 96 50 96 C50 96 36 90 38 76 C22 78 18 64 30 56 C18 52 20 40 32 38 C26 30 30 22 40 26 C46 20 42 14 50 4Z"
+                fill="url(#g1)" stroke="#c6a15b" stroke-width="1.2"/>
+            <path d="M50 96 L50 112 M40 112 L60 112" stroke="#c6a15b" stroke-width="1.2"/>
+            <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="0" y2="120" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#2a2116"/>
+                    <stop offset="1" stop-color="#181410"/>
+                </linearGradient>
+            </defs>
+        </svg>
+
+        <h1 class="couple-names">Peggy<span class="amp">&amp;</span>Jody</h1>
+        <p class="cover-date">01 &nbsp;·&nbsp; 12 &nbsp;·&nbsp; 2026</p>
+
+        <button class="btn" id="open-btn">Buka Undangan</button>
+    </div>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <main id="main-content">
+
+        <!-- QUOTE -->
+        <section id="quote-section">
+            <div class="reveal">
+                <div class="divider">
+                    <span class="line"></span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#c6a15b" stroke-width="1"><path d="M12 3 L14 9 L20 9 L15 13 L17 20 L12 16 L7 20 L9 13 L4 9 L10 9 Z"/></svg>
+                    <span class="line"></span>
+                </div>
+                <p>"Dan di antara tanda-tanda kebesaran-Nya adalah diciptakan-Nya pasangan hidup untuk setiap insan, agar hati menemukan ketenangan, serta tumbuh kasih dan sayang di antara keduanya."</p>
+                <p class="signoff">— QS. Ar-Rum, ayat 21 (disarikan)</p>
+            </div>
+        </section>
+
+        <!-- MEMPELAI -->
+        <section id="mempelai">
+            <div class="reveal">
+                <p class="eyebrow">Mempelai</p>
+                <h2 class="section-title">Kedua Mempelai</h2>
+                <div class="couple-grid">
+                    <div class="couple-card">
+                        <div class="portrait">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+                        </div>
+                        <p class="role">Mempelai Wanita</p>
+                        <h3>Peggy</h3>
+                        <p>Putri dari Bapak Alm.Rifky Djunaedi &amp; Ibu Dina Puspasari</p>
+                    </div>
+                    <div class="couple-and">&amp;</div>
+                    <div class="couple-card">
+                        <div class="portrait">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+                        </div>
+                        <p class="role">Mempelai Pria</p>
+                        <h3>Jody</h3>
+                        <p>Putra dari Bapak [Nama Ayah] &amp; Ibu [Nama Ibu]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COUNTDOWN -->
+        <section id="countdown-section">
+            <div class="reveal">
+                <p class="eyebrow">Menanti Hari Bahagia</p>
+                <h2 class="section-title">Hitung Mundur</h2>
+                <p class="section-sub">Senin, 1 Desember 2026</p>
+                <div class="countdown" id="countdown">
+                    <div class="box"><span class="num" id="cd-days">00</span><span class="lbl">Hari</span></div>
+                    <div class="box"><span class="num" id="cd-hours">00</span><span class="lbl">Jam</span></div>
+                    <div class="box"><span class="num" id="cd-mins">00</span><span class="lbl">Menit</span></div>
+                    <div class="box"><span class="num" id="cd-secs">00</span><span class="lbl">Detik</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACARA -->
+        <section id="acara">
+            <div class="reveal">
+                <p class="eyebrow">Waktu &amp; Tempat</p>
+                <h2 class="section-title">Acara Pernikahan</h2>
+                <div class="event-card">
+                    <h4>Akad &amp; Resepsi</h4>
+                    <div class="row">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+                        <div><strong>Senin, 1 Desember 2026</strong>08.00 WIB – selesai</div>
+                    </div>
+                    <div class="row">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                        <div><strong>Masjid Agung Jawa Tengah</strong>Jl. Gajah Raya, Sambirejo, Kec. Gayamsari, Semarang, Jawa Tengah</div>
+                    </div>
+                    <div style="text-align:center; margin-top:18px;">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Masjid+Agung+Jawa+Tengah" target="_blank" rel="noopener" class="btn btn-outline" style="text-decoration:none; display:inline-block;">Buka Lokasi di Maps</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALERI -->
+        <section id="galeri">
+            <div class="reveal">
+                <p class="eyebrow">Kilas Kasih</p>
+                <h2 class="section-title">Galeri Foto</h2>
+                <p class="section-sub">Ganti bingkai di bawah ini dengan foto Anda berdua.</p>
+                <div class="gallery-grid">
+                    <div class="frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 17l4-5 3 3 5-6 4 8H4Z"/><circle cx="8" cy="8" r="1.6"/></svg></div>
+                    <div class="frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 17l4-5 3 3 5-6 4 8H4Z"/><circle cx="8" cy="8" r="1.6"/></svg></div>
+                    <div class="frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 17l4-5 3 3 5-6 4 8H4Z"/><circle cx="8" cy="8" r="1.6"/></svg></div>
+                    <div class="frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 17l4-5 3 3 5-6 4 8H4Z"/><circle cx="8" cy="8" r="1.6"/></svg></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AMPLOP DIGITAL -->
+        <section id="amplop">
+            <div class="reveal">
+                <p class="eyebrow">Tanda Kasih</p>
+                <h2 class="section-title">Amplop Digital</h2>
+                <p class="section-sub">Doa restu Anda adalah karunia terindah. Namun bila berkenan memberi tanda kasih, dapat melalui:</p>
+
+                <div class="bank-card">
+                    <p class="bank-name">Bank BCA</p>
+                    <p class="acc-number" id="acc1">1234567890</p>
+                    <p class="acc-name">a.n. Peggy</p>
+                    <button class="copy-btn" data-target="acc1">Salin Nomor</button>
+                </div>
+                <div class="bank-card">
+                    <p class="bank-name">Bank Mandiri</p>
+                    <p class="acc-number" id="acc2">0987654321</p>
+                    <p class="acc-name">a.n. Jody</p>
+                    <button class="copy-btn" data-target="acc2">Salin Nomor</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP -->
+        <section id="rsvp">
+            <div class="reveal">
+                <p class="eyebrow">Konfirmasi Kehadiran</p>
+                <h2 class="section-title">RSVP</h2>
+                <p class="section-sub">Mohon konfirmasi kehadiran Anda melalui WhatsApp agar kami dapat menyiapkan sambutan terbaik.</p>
+                <form id="rsvp-form">
+                    <div>
+                        <label for="rsvp-name">Nama</label>
+                        <input type="text" id="rsvp-name" required placeholder="Nama lengkap Anda">
+                    </div>
+                    <div>
+                        <label for="rsvp-count">Jumlah Tamu</label>
+                        <input type="number" id="rsvp-count" min="1" max="10" value="1" required>
+                    </div>
+                    <div>
+                        <label for="rsvp-status">Konfirmasi</label>
+                        <select id="rsvp-status">
+                            <option value="Hadir">Hadir</option>
+                            <option value="Tidak Hadir">Tidak Hadir</option>
+                            <option value="Ragu-ragu">Ragu-ragu</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Kirim via WhatsApp</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- UCAPAN & DOA -->
+        <section id="ucapan">
+            <div class="reveal">
+                <p class="eyebrow">Ucapan</p>
+                <h2 class="section-title">Ucapan &amp; Doa</h2>
+                <p class="section-sub">Tinggalkan doa dan ucapan terbaik Anda untuk kedua mempelai.</p>
+                <form id="wish-form">
+                    <div>
+                        <label for="wish-name">Nama</label>
+                        <input type="text" id="wish-name" required placeholder="Nama Anda">
+                    </div>
+                    <div>
+                        <label for="wish-message">Pesan</label>
+                        <textarea id="wish-message" required placeholder="Tulis doa dan ucapan Anda di sini..."></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Ucapan</button>
+                </form>
+                <div class="wish-list" id="wish-list">
+                    <p class="wish-empty" id="wish-empty">Jadilah yang pertama memberi ucapan.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <section id="footer">
+            <div class="reveal">
+                <svg class="gunungan" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 4 C58 14 54 20 60 26 C70 22 74 30 68 38 C80 40 82 52 70 56 C82 64 78 78 62 76 C64 90 50 96 50 96 C50 96 36 90 38 76 C22 78 18 64 30 56 C18 52 20 40 32 38 C26 30 30 22 40 26 C46 20 42 14 50 4Z"
+                        fill="#221b14" stroke="#c6a15b" stroke-width="1.2"/>
+                </svg>
+                <p class="thanks">Matur Nuwun</p>
+                <p>Terima kasih atas doa restu dan kehadiran Anda.<br>Merupakan suatu kehormatan bagi kami.</p>
+                <p style="margin-top:14px; font-family:'Playfair Display', serif; font-style:italic; color:var(--gold-bright);">Peggy &amp; Jody</p>
+                <p class="credit">Undangan digital · edit sesuai kebutuhan Anda</p>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<!-- MUSIC TOGGLE -->
+<button id="music-toggle" aria-label="Putar musik latar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.4"/></svg>
+</button>
+
+<audio id="gamelan-audio" loop>
+    <!-- <source src="gamelan.mp3" type="audio/mpeg"> -->
+</audio>
+
+<!-- JavaScript Eksternal -->
+<script src="script.js"></script>
+</body>
+</html>
